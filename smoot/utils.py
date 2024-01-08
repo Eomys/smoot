@@ -14,7 +14,6 @@ import numpy as np
 import pickle
 import time
 from smt.sampling_methods import LHS
-from pymoo.factory import get_performance_indicator
 
 
 def write_increase_iter(
@@ -65,14 +64,11 @@ def write_increase_iter(
     transfos : list of function
         Transformations for wb2S
     """
+    raise Exception("This function is deactivate due to the utilisation of depreciated pymoo function (\"get_performance_indicator\"")
     if xlimits is None:
         xlimits = fun.xlimits
     if reference is None and indic != "hv":
         reference = fun.pareto()[1]
-    if indic == "hv":
-        igd = get_performance_indicator(indic, ref_point=reference)
-    else:
-        igd = get_performance_indicator(indic, reference)
     if titles is None:
         titles = criterions
     fichier = open(path, "wb")
